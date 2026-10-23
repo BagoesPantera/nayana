@@ -26,7 +26,7 @@
       "file_type": "code",
       "norm_label": "destroyhls()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L55"
+      "source_location": "L74"
     },
     {
       "id": "app_pages_index_flytomarker",
@@ -38,7 +38,7 @@
       "file_type": "code",
       "norm_label": "flytomarker()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L62"
+      "source_location": "L81"
     },
     {
       "id": "app_pages_index_loadstream",
@@ -50,7 +50,7 @@
       "file_type": "code",
       "norm_label": "loadstream()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L66"
+      "source_location": "L96"
     },
     {
       "id": "app_pages_index_onvideoerror",
@@ -62,7 +62,7 @@
       "file_type": "code",
       "norm_label": "onvideoerror()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L110"
+      "source_location": "L140"
     },
     {
       "id": "app_pages_index_onvideoplaying",
@@ -74,7 +74,7 @@
       "file_type": "code",
       "norm_label": "onvideoplaying()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L105"
+      "source_location": "L135"
     },
     {
       "id": "app_pages_index_retry",
@@ -86,7 +86,7 @@
       "file_type": "code",
       "norm_label": "retry()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L101"
+      "source_location": "L131"
     },
     {
       "id": "server_utils_cctv_proxy_findcctv",
@@ -135,17 +135,6 @@
       "norm_label": "rewritehlsurls()",
       "source_file": "server/utils/cctv-proxy.ts",
       "source_location": "L34"
-    },
-    {
-      "id": "leaflet_leaflet",
-      "label": "leaflet",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "leaflet",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "leaflet",
-      "source_file": "leaflet"
     },
     {
       "id": "package",
@@ -280,6 +269,17 @@
       "source_location": "L1"
     },
     {
+      "id": "maplibre_gl_maplibre_gl",
+      "label": "maplibre-gl",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "maplibre-gl",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "maplibre-gl",
+      "source_file": "maplibre-gl"
+    },
+    {
       "id": "app_pages_index",
       "label": "index.vue",
       "_origin": "ast",
@@ -299,7 +299,7 @@
       "file_type": "code",
       "norm_label": "loaderror",
       "source_file": "app/pages/index.vue",
-      "source_location": "L13"
+      "source_location": "L12"
     },
     {
       "id": "app_pages_index_loading",
@@ -310,18 +310,7 @@
       "file_type": "code",
       "norm_label": "loading",
       "source_file": "app/pages/index.vue",
-      "source_location": "L12"
-    },
-    {
-      "id": "app_pages_index_mapel",
-      "label": "mapEl",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "index.vue",
-      "file_type": "code",
-      "norm_label": "mapel",
-      "source_file": "app/pages/index.vue",
-      "source_location": "L9"
+      "source_location": "L11"
     },
     {
       "id": "app_pages_index_selectedcctv",
@@ -332,7 +321,7 @@
       "file_type": "code",
       "norm_label": "selectedcctv",
       "source_file": "app/pages/index.vue",
-      "source_location": "L11"
+      "source_location": "L10"
     },
     {
       "id": "app_pages_index_videoref",
@@ -343,7 +332,7 @@
       "file_type": "code",
       "norm_label": "videoref",
       "source_file": "app/pages/index.vue",
-      "source_location": "L10"
+      "source_location": "L9"
     },
     {
       "id": "server_api_cctv_id",
@@ -449,7 +438,7 @@
       "label": "README.md",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Nuxt Minimal Starter",
+      "community_name": "NAYANA",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "readme.md",
@@ -457,52 +446,136 @@
       "source_location": "L1"
     },
     {
-      "id": "readme_development_server",
-      "label": "Development Server",
+      "id": "readme_api_endpoints_reference",
+      "label": "API Endpoints Reference",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Nuxt Minimal Starter",
+      "community_name": "NAYANA",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "development server",
+      "norm_label": "api endpoints reference",
       "source_file": "README.md",
-      "source_location": "L23"
+      "source_location": "L104"
     },
     {
-      "id": "readme_nuxt_minimal_starter",
-      "label": "Nuxt Minimal Starter",
+      "id": "readme_architecture_data_flow",
+      "label": "Architecture & Data Flow",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Nuxt Minimal Starter",
+      "community_name": "NAYANA",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "nuxt minimal starter",
+      "norm_label": "architecture & data flow",
+      "source_file": "README.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "readme_getting_started",
+      "label": "Getting Started",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "getting started",
+      "source_file": "README.md",
+      "source_location": "L74"
+    },
+    {
+      "id": "readme_installation",
+      "label": "Installation",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "installation",
+      "source_file": "README.md",
+      "source_location": "L81"
+    },
+    {
+      "id": "readme_license_attribution",
+      "label": "License & Attribution",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "license & attribution",
+      "source_file": "README.md",
+      "source_location": "L112"
+    },
+    {
+      "id": "readme_nayana",
+      "label": "NAYANA",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "nayana",
       "source_file": "README.md",
       "source_location": "L1"
+    },
+    {
+      "id": "readme_overview_key_features",
+      "label": "Overview & Key Features",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "overview & key features",
+      "source_file": "README.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "readme_prerequisites",
+      "label": "Prerequisites",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "prerequisites",
+      "source_file": "README.md",
+      "source_location": "L76"
     },
     {
       "id": "readme_production",
       "label": "Production",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Nuxt Minimal Starter",
+      "community_name": "NAYANA",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "production",
       "source_file": "README.md",
-      "source_location": "L41"
+      "source_location": "L97"
     },
     {
-      "id": "readme_setup",
-      "label": "Setup",
+      "id": "readme_project_structure",
+      "label": "Project Structure",
       "_origin": "ast",
       "community": 6,
-      "community_name": "Nuxt Minimal Starter",
+      "community_name": "NAYANA",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "setup",
+      "norm_label": "project structure",
       "source_file": "README.md",
-      "source_location": "L5"
+      "source_location": "L49"
+    },
+    {
+      "id": "readme_tech_stack",
+      "label": "Tech Stack",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NAYANA",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "tech stack",
+      "source_file": "README.md",
+      "source_location": "L39"
     },
     {
       "id": "package_devdependencies",
@@ -513,7 +586,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L19"
+      "source_location": "L21"
     },
     {
       "id": "package_devdependencies_nuxtjs_tailwindcss",
@@ -524,7 +597,7 @@
       "file_type": "code",
       "norm_label": "@nuxtjs/tailwindcss",
       "source_file": "package.json",
-      "source_location": "L20"
+      "source_location": "L22"
     },
     {
       "id": "package_devdependencies_types_leaflet",
@@ -535,7 +608,7 @@
       "file_type": "code",
       "norm_label": "@types/leaflet",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L23"
     },
     {
       "id": "package_devdependencies_types_node",
@@ -546,7 +619,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L24"
     },
     {
       "id": "nuxtjs_tailwindcss",
@@ -557,7 +630,7 @@
       "file_type": "concept",
       "norm_label": "@nuxtjs/tailwindcss",
       "source_file": "package.json",
-      "source_location": "L20"
+      "source_location": "L22"
     },
     {
       "id": "types_leaflet",
@@ -568,7 +641,7 @@
       "file_type": "concept",
       "norm_label": "@types/leaflet",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L23"
     },
     {
       "id": "types_node",
@@ -579,7 +652,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L24"
     },
     {
       "id": "package_dependencies",
@@ -601,7 +674,7 @@
       "file_type": "code",
       "norm_label": "hls.js",
       "source_file": "package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "package_dependencies_leaflet",
@@ -612,7 +685,29 @@
       "file_type": "code",
       "norm_label": "leaflet",
       "source_file": "package.json",
-      "source_location": "L14"
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_maplibre_gl",
+      "label": "maplibre-gl",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "maplibre-gl",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_dependencies_maplibre_maplibre_gl_leaflet",
+      "label": "@maplibre/maplibre-gl-leaflet",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@maplibre/maplibre-gl-leaflet",
+      "source_file": "package.json",
+      "source_location": "L13"
     },
     {
       "id": "package_dependencies_nuxt",
@@ -623,7 +718,7 @@
       "file_type": "code",
       "norm_label": "nuxt",
       "source_file": "package.json",
-      "source_location": "L15"
+      "source_location": "L17"
     },
     {
       "id": "package_dependencies_vue",
@@ -634,7 +729,7 @@
       "file_type": "code",
       "norm_label": "vue",
       "source_file": "package.json",
-      "source_location": "L16"
+      "source_location": "L18"
     },
     {
       "id": "package_dependencies_vue_router",
@@ -645,7 +740,29 @@
       "file_type": "code",
       "norm_label": "vue-router",
       "source_file": "package.json",
-      "source_location": "L17"
+      "source_location": "L19"
+    },
+    {
+      "id": "leaflet",
+      "label": "leaflet",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "leaflet",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "maplibre_maplibre_gl_leaflet",
+      "label": "@maplibre/maplibre-gl-leaflet",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "@maplibre/maplibre-gl-leaflet",
+      "source_file": "package.json",
+      "source_location": "L13"
     },
     {
       "id": "nuxt",
@@ -656,7 +773,7 @@
       "file_type": "concept",
       "norm_label": "nuxt",
       "source_file": "package.json",
-      "source_location": "L15"
+      "source_location": "L17"
     },
     {
       "id": "package_json_hls_js",
@@ -667,18 +784,18 @@
       "file_type": "concept",
       "norm_label": "hls.js",
       "source_file": "package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
-      "id": "package_json_leaflet",
-      "label": "leaflet",
+      "id": "package_json_maplibre_gl",
+      "label": "maplibre-gl",
       "_origin": "ast",
       "community": 8,
       "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "leaflet",
+      "norm_label": "maplibre-gl",
       "source_file": "package.json",
-      "source_location": "L14"
+      "source_location": "L16"
     },
     {
       "id": "vue",
@@ -689,7 +806,7 @@
       "file_type": "concept",
       "norm_label": "vue",
       "source_file": "package.json",
-      "source_location": "L16"
+      "source_location": "L18"
     },
     {
       "id": "vue_router",
@@ -700,14 +817,14 @@
       "file_type": "concept",
       "norm_label": "vue-router",
       "source_file": "package.json",
-      "source_location": "L17"
+      "source_location": "L19"
     },
     {
       "id": "agents",
       "label": "AGENTS.md",
       "_origin": "ast",
       "community": 9,
-      "community_name": "AGENTS.md",
+      "community_name": "NAYANA \u2014 AI Agent Guide",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "agents.md",
@@ -715,14 +832,98 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_1_system_architecture_guidelines",
+      "label": "1. System Architecture Guidelines",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. system architecture guidelines",
+      "source_file": "AGENTS.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "agents_2_code_standards_patterns",
+      "label": "2. Code Standards & Patterns",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. code standards & patterns",
+      "source_file": "AGENTS.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "agents_3_hls_rewriting_security_conventions",
+      "label": "3. HLS Rewriting & Security Conventions",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. hls rewriting & security conventions",
+      "source_file": "AGENTS.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "agents_4_ui_ux_rules",
+      "label": "4. UI/UX Rules",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. ui/ux rules",
+      "source_file": "AGENTS.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "agents_5_common_commands",
+      "label": "5. Common Commands",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. common commands",
+      "source_file": "AGENTS.md",
+      "source_location": "L63"
+    },
+    {
+      "id": "agents_critical_security_rule",
+      "label": "CRITICAL SECURITY RULE",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "critical security rule",
+      "source_file": "AGENTS.md",
+      "source_location": "L13"
+    },
+    {
       "id": "agents_graphify",
       "label": "graphify",
       "_origin": "ast",
       "community": 9,
-      "community_name": "AGENTS.md",
+      "community_name": "NAYANA \u2014 AI Agent Guide",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "graphify",
+      "source_file": "AGENTS.md",
+      "source_location": "L77"
+    },
+    {
+      "id": "agents_nayana_ai_agent_guide",
+      "label": "NAYANA \u2014 AI Agent Guide",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "NAYANA \u2014 AI Agent Guide",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "nayana \u2014 ai agent guide",
       "source_file": "AGENTS.md",
       "source_location": "L1"
     }
@@ -737,7 +938,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/pages/index.vue",
-      "source_location": "L67",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -749,7 +950,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/pages/index.vue",
-      "source_location": "L102",
+      "source_location": "L132",
       "weight": 1.0
     },
     {
@@ -785,19 +986,43 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
       "source": "package_dependencies_leaflet",
-      "target": "package_json_leaflet",
+      "target": "leaflet",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L14",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_maplibre_gl",
+      "target": "package_json_maplibre_gl",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies_maplibre_maplibre_gl_leaflet",
+      "target": "maplibre_maplibre_gl_leaflet",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -809,7 +1034,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -821,7 +1046,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -833,7 +1058,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -845,7 +1070,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -857,7 +1082,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -869,12 +1094,12 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
       "source": "agents",
-      "target": "agents_graphify",
+      "target": "agents_nayana_ai_agent_guide",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -884,36 +1109,80 @@
       "weight": 1.0
     },
     {
-      "source": "app_pages_index",
-      "target": "app_pages_index_videoref",
+      "source": "agents_1_system_architecture_guidelines",
+      "target": "agents_critical_security_rule",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L10",
+      "source_file": "AGENTS.md",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
-      "source": "app_pages_index",
-      "target": "app_pages_index_retry",
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_2_code_standards_patterns",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L101",
+      "source_file": "AGENTS.md",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
-      "source": "app_pages_index",
-      "target": "app_pages_index_onvideoplaying",
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_3_hls_rewriting_security_conventions",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L105",
+      "source_file": "AGENTS.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_4_ui_ux_rules",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_5_common_commands",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_1_system_architecture_guidelines",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_nayana_ai_agent_guide",
+      "target": "agents_graphify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -924,18 +1193,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "app_pages_index",
-      "target": "app_pages_index_onvideoerror",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L110",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -946,7 +1204,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L12",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -957,40 +1215,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L13",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_destroyhls",
+      "target": "app_pages_index_retry",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L55",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_flytomarker",
+      "target": "app_pages_index_onvideoplaying",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L62",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_loadstream",
+      "target": "app_pages_index_onvideoerror",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L66",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -1006,13 +1264,46 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_mapel",
+      "target": "app_pages_index_destroyhls",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_flytomarker",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_videoref",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_loadstream",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -1028,17 +1319,6 @@
     },
     {
       "source": "package",
-      "target": "package_devdependencies",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
       "target": "package_name",
       "relation": "contains",
       "_origin": "ast",
@@ -1046,6 +1326,17 @@
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
+      "target": "package_devdependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -1083,7 +1374,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_hls_js",
+      "target": "package_dependencies_maplibre_maplibre_gl_leaflet",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1094,7 +1385,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_leaflet",
+      "target": "package_dependencies_hls_js",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1105,7 +1396,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_nuxt",
+      "target": "package_dependencies_leaflet",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1116,7 +1407,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_vue",
+      "target": "package_dependencies_maplibre_gl",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1127,13 +1418,35 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_vue_router",
+      "target": "package_dependencies_nuxt",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_vue",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_vue_router",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -1144,7 +1457,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -1155,7 +1468,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -1166,7 +1479,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -1226,7 +1539,7 @@
     },
     {
       "source": "readme",
-      "target": "readme_nuxt_minimal_starter",
+      "target": "readme_nayana",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -1236,36 +1549,113 @@
       "weight": 1.0
     },
     {
-      "source": "readme_nuxt_minimal_starter",
-      "target": "readme_development_server",
+      "source": "readme_getting_started",
+      "target": "readme_prerequisites",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L23",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
-      "source": "readme_nuxt_minimal_starter",
+      "source": "readme_getting_started",
+      "target": "readme_installation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_getting_started",
       "target": "readme_production",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L41",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
-      "source": "readme_nuxt_minimal_starter",
-      "target": "readme_setup",
+      "source": "readme_nayana",
+      "target": "readme_api_endpoints_reference",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L5",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_license_attribution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_architecture_data_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_tech_stack",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_project_structure",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_getting_started",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_nayana",
+      "target": "readme_overview_key_features",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -1347,5 +1737,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "70ba15b7f67b13c0e93842cc8a06fce0dfe1ce0c"
+  "built_at_commit": "e1e4cfe86ace74ce9b907f19f59d55316fdad954"
 }

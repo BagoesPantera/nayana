@@ -50,13 +50,16 @@ Guidelines for AI coding agents (GitHub Copilot, Cursor, Claude Code, etc.) work
 ## 4. UI/UX Rules
 
 - **Mobile-first** — design for small screens first; the map is `h-[100dvh]` fullscreen, header is floating `top-3 left-3 right-3`, player is a slide-up bottom sheet. Verify nothing collides with mobile browser chrome.
-- **Leaflet is browser-only** — never import Leaflet at the module top level of a page. Use a dynamic `await import('leaflet')` inside `onMounted` (after `useFetch` data resolves). Same for `hls.js` (`await import('hls.js')` before attachment).
-- Must-do leaflet details:
-  - `L.map(el, { zoomControl: false })` then `L.control.zoom({ position: 'bottomright' })` (default top-left zoom collides with the floating header).
-  - Fix default marker icon paths against unpkg CDN (bundler breaks the bundled icon URLs).
-  - `map.remove()` in `onBeforeUnmount` to avoid duplicate maps on HMR/navigation.
+- **MapLibre GL is browser-only** — never import `maplibre-gl` at module top level. Use `const maplibregl = await import('maplibre-gl')` inside `onMounted`. Leaflet has been fully removed in favor of native MapLibre GL (vector tiles render better; the `@maplibre/maplibre-gl-leaflet` bridge caused blank-canvas issues).
+- Must-do MapLibre details:
+  - **Worker URL fix (Vite)** — Vite dev cannot bundle MapLibre's internal web worker ("Worker failed to load"). Before constructing any `Map`, call `maplibregl.setWorkerUrl('https://unpkg.com/maplibre-gl@<installed-version>/dist/maplibre-gl-worker.mjs')` (note: `maplibre-gl-csp-worker.js` does not exist in v6; the file is `maplibre-gl-worker.mjs`, and the API is `setWorkerUrl`, not `workerUrl = ...`).
+  - Base layer: OpenFreeMap Liberty vector style — `new maplibregl.Map({ container: 'map', style: 'https://tiles.openfreemap.org/styles/liberty' })`. Note the `[lng, lat]` center order. Its CSS must stay in `nuxt.config.ts` `css`.
+  - Markers: `new maplibregl.Marker().setLngLat([item.lng, item.lat]).addTo(map)` and register the click on `marker.getElement()`.
+  - Nested coordinate order: MapLibre uses `[lng, lat]` for map center, flyTo center, and marker `setLngLat` (the client data uses lat/lng properties — do not mix them up).
+  - Non-blocking actions must be gated behind `map.on('load', ...)`.
+  - Wrap the post-flight `map.panBy([0, -100])` offset in a `moveend` handler (`settlePan`) and unregister it on every new flight and in `onBeforeUnmount`; call `map.remove()` on unmount to avoid duplicate WebGL contexts on HMR/navigation.
 - **HLS lifecycle** — destroy `Hls` instances on close, on stream switch, and on unmount (memory leak prevention). Native HLS via `video.canPlayType('application/vnd.apple.mpegurl')` takes precedence on Safari/iOS.
-- **Map navigation** — `map.flyTo([lat, lng], 13, { duration: 1 })` on marker select, followed by `map.panBy([0, 100], { animate: true })` after the sheet opens so the marker stays visible above the bottom sheet. Do not reintroduce manual project/unproject offset math.
+- **Map navigation** — `map.flyTo({ center: [lng, lat], zoom: 13, duration: 1000 })` on marker select, followed by `map.panBy([0, -100])` in the `settlePan` moveend handler so the marker stays visible above the bottom sheet. Do not reintroduce manual project/unproject offset math.
 
 ## 5. Common Commands
 

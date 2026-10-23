@@ -8,7 +8,7 @@ NAYANA is a mobile-first web application that aggregates publicly available CCTV
 
 ## Overview & Key Features
 
-- **Mobile-First Interactive Map** — A fullscreen Leaflet map centered on Bali with smooth `flyTo` navigation, glassmorphism floating header, and an animated bottom sheet player.
+- **Mobile-First Interactive Map** — A fullscreen MapLibre GL map of Bali styled with OpenFreeMap Liberty, smooth `flyTo` navigation, glassmorphism floating header, and an animated bottom sheet player.
 - **Secure Proxied Stream Architecture** — Upstream stream URLs are never exposed to the client. HLS playlists are rewritten server-side so every segment request is masked behind a Base64 token, hiding the origin `transcode.baliprov.go.id` from DevTools and network waterfalls.
 - **Real-Time HLS Video Player with Fallbacks** — Native HLS playback on Safari/iOS with automatic fallback to Hls.js on Chrome/Firefox/Android, plus loading spinner and friendly error recovery ("Coba Lagi").
 - **Custom Header Spoofing** — All proxy requests carry a mobile User-Agent and `Referer` header to pass origin-side CORS, Referer, and device checks that would otherwise block direct browser playback.
@@ -42,7 +42,7 @@ NAYANA is a mobile-first web application that aggregates publicly available CCTV
 | --- | --- |
 | Framework | Nuxt 4 (Vue 3, SSR, Nitro Engine) |
 | Styling | Tailwind CSS (`@nuxtjs/tailwindcss`) |
-| Mapping | Leaflet + OpenStreetMap tiles |
+| Mapping | MapLibre GL JS (OpenFreeMap Liberty style) |
 | Streaming | Hls.js (MPEG-TS / LL-HLS player) |
 | Language | TypeScript |
 
@@ -113,4 +113,4 @@ npm run preview # Run the production build locally
 
 - **CCTV source** — Streaming courtesy of the Bali Provincial Government CCTV network (`transcode.baliprov.go.id` / `cctv-pemerintah.baliprov.go.id`). All rights belong to their respective owners; NAYANA acts solely as a viewing proxy for public content.
 - **Tiles** — Map tiles © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
-- **Stream playback** — Powered by [hls.js](https://github.com/video-dev/hls.js) and [Leaflet](https://leafletjs.com/).
+- **Stream playback** — Powered by [hls.js](https://github.com/video-dev/hls.js) and [MapLibre GL JS](https://maplibre.org/).

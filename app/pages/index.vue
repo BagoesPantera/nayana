@@ -1,48 +1,67 @@
 <script setup lang="ts">
-import type { Map as LeafletMap } from 'leaflet'
+import type { Map as MaplibreMap } from 'maplibre-gl'
 import type { default as HlsInstance, ErrorData } from 'hls.js'
 
 const { data: markers } = await useFetch('/api/markers')
 
 type MarkerItem = NonNullable<typeof markers.value>[number]
 
-const mapEl = ref<HTMLElement | null>(null)
 const videoRef = ref<HTMLVideoElement | null>(null)
 const selectedCctv = ref<MarkerItem | null>(null)
 const loading = ref(false)
 const loadError = ref(false)
-let map: LeafletMap | null = null
+let map: MaplibreMap | null = null
+let settlePan: (() => void) | null = null
 let hls: HlsInstance | null = null
 
 onMounted(async () => {
-  const L = await import('leaflet')
+  const maplibregl = await import('maplibre-gl')
 
-  // Bundlers break Leaflet's default icon paths; point them at the CDN.
-  delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl
-  L.Icon.Default.mergeOptions({
-    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
-  })
+  // Vite's worker bundling breaks MapLibre's internal worker — point it at
+  // the pinned CDN copy (`maplibre-gl-csp-worker.js` no longer exists in v6)
+  // before any Map is constructed.
+  maplibregl.setWorkerUrl('https://unpkg.com/maplibre-gl@6.15.0/dist/maplibre-gl-worker.mjs')
 
-  map = L.map(mapEl.value as HTMLElement, { zoomControl: false }).setView(
-    [-8.4095, 115.1889],
-    10
-  )
-  L.control.zoom({ position: 'bottomright' }).addTo(map)
+  console.log('MARKERS DATA:', markers.value)
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map)
+  // ponytail: temporary debug boot + one-shot fallback to prove whether the
+  // blank map is an OpenFreeMap asset issue (glyphs/sprites/tiles) or our
+  // setup. Remove the logging + fallback branch once the map renders.
+  const bootMap = (style: string, isFallback = false) => {
+    map?.remove()
+    map = new maplibregl.Map({
+      container: 'map',
+      style,
+      // MapLibre uses [lng, lat] order.
+      center: [115.1889, -8.4095],
+      zoom: 10
+    })
 
-  markers.value?.forEach((item) => {
-    L.marker([item.lat, item.lng])
-      .addTo(map as LeafletMap)
-      .on('click', () => {
-        selectedCctv.value = item
+    map.on('error', (e) => console.error('MAPLIBRE ERROR:', e))
+
+    map.on('load', () => {
+      if (!map) return
+      console.log('MAP LOADED', map.getCenter(), isFallback ? '(fallback style)' : '')
+      markers.value?.forEach((item) => {
+        console.log('ADDING MARKER AT:', [item.lng, item.lat])
+        new maplibregl.Marker()
+          .setLngLat([item.lng, item.lat])
+          .addTo(map as MaplibreMap)
+          .getElement()
+          .addEventListener('click', () => {
+            selectedCctv.value = item
+          })
       })
+    })
+  }
+
+  bootMap('https://tiles.openfreemap.org/styles/liberty')
+
+  // Retry once with the MapLibre demo style on the first style-level error.
+  // ponytail: fires on any map error (tiles included), not only style errors.
+  map?.once('error', (e) => {
+    console.error('MAPLIBRE ERROR:', e)
+    bootMap('https://demotiles.maplibre.org/style.json', true)
   })
 })
 
@@ -60,7 +79,18 @@ function destroyHls() {
 // Fly out to the marker smoothly; nudge the map up afterwards so the marker
 // stays clear of the bottom sheet.
 function flyToMarker(item: MarkerItem) {
-  map?.flyTo([item.lat, item.lng], 13, { duration: 1 })
+  if (!map) return
+  if (settlePan) map.off('moveend', settlePan)
+
+  map.flyTo({ center: [item.lng, item.lat], zoom: 13, duration: 1000 })
+
+  settlePan = () => {
+    if (!map || !settlePan) return
+    map.off('moveend', settlePan)
+    settlePan = null
+    map.panBy([0, -100])
+  }
+  map.on('moveend', settlePan)
 }
 
 async function loadStream(cctv: MarkerItem) {
@@ -120,13 +150,12 @@ watch(selectedCctv, (cctv) => {
   }
   loadStream(cctv)
   flyToMarker(cctv)
-  setTimeout(() => map?.panBy([0, 100], { animate: true }), 300)
 })
 </script>
 
 <template>
   <div class="relative h-[100dvh] w-full">
-    <div ref="mapEl" class="absolute inset-0" />
+    <div id="map" class="w-full h-full absolute inset-0 z-0" />
 
     <!-- Floating header -->
     <header
