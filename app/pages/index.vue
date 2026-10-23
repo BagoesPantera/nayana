@@ -1,156 +1,158 @@
 <script setup lang="ts">
-import type { Map as MaplibreMap } from 'maplibre-gl'
-import type { default as HlsInstance, ErrorData } from 'hls.js'
+import type { Map as MaplibreMap } from "maplibre-gl";
+import type { default as HlsInstance, ErrorData } from "hls.js";
 
-const { data: markers } = await useFetch('/api/markers')
+const { data: markers } = await useFetch("/api/markers");
 
-type MarkerItem = NonNullable<typeof markers.value>[number]
+type MarkerItem = NonNullable<typeof markers.value>[number];
 
-const videoRef = ref<HTMLVideoElement | null>(null)
-const selectedCctv = ref<MarkerItem | null>(null)
-const loading = ref(false)
-const loadError = ref(false)
-let map: MaplibreMap | null = null
-let settlePan: (() => void) | null = null
-let hls: HlsInstance | null = null
+const videoRef = ref<HTMLVideoElement | null>(null);
+const selectedCctv = ref<MarkerItem | null>(null);
+const loading = ref(false);
+const loadError = ref(false);
+let map: MaplibreMap | null = null;
+let settlePan: (() => void) | null = null;
+let hls: HlsInstance | null = null;
 
 onMounted(async () => {
-  const maplibregl = await import('maplibre-gl')
+  const maplibregl = await import("maplibre-gl");
 
   // Vite's worker bundling breaks MapLibre's internal worker — point it at
   // the pinned CDN copy (`maplibre-gl-csp-worker.js` no longer exists in v6)
   // before any Map is constructed.
-  maplibregl.setWorkerUrl('https://unpkg.com/maplibre-gl@6.15.0/dist/maplibre-gl-worker.mjs')
+  maplibregl.setWorkerUrl(
+    "https://unpkg.com/maplibre-gl@6.15.0/dist/maplibre-gl-worker.mjs",
+  );
 
-  console.log('MARKERS DATA:', markers.value)
-
-  // ponytail: temporary debug boot + one-shot fallback to prove whether the
+  // ponytail: one-shot fallback to prove whether the
   // blank map is an OpenFreeMap asset issue (glyphs/sprites/tiles) or our
-  // setup. Remove the logging + fallback branch once the map renders.
+  // setup. Remove the fallback branch once the map renders.
   const bootMap = (style: string, isFallback = false) => {
-    map?.remove()
+    map?.remove();
     map = new maplibregl.Map({
-      container: 'map',
+      container: "map",
       style,
       // MapLibre uses [lng, lat] order.
       center: [115.1889, -8.4095],
-      zoom: 10
-    })
+      zoom: 10,
+    });
 
-    map.on('error', (e) => console.error('MAPLIBRE ERROR:', e))
+    map.on("error", (e) => console.error("MAPLIBRE ERROR:", e));
 
-    map.on('load', () => {
-      if (!map) return
-      console.log('MAP LOADED', map.getCenter(), isFallback ? '(fallback style)' : '')
+    map.on("load", () => {
+      if (!map) return;
       markers.value?.forEach((item) => {
-        console.log('ADDING MARKER AT:', [item.lng, item.lat])
         new maplibregl.Marker()
           .setLngLat([item.lng, item.lat])
           .addTo(map as MaplibreMap)
           .getElement()
-          .addEventListener('click', () => {
-            selectedCctv.value = item
-          })
-      })
-    })
-  }
+          .addEventListener("click", () => {
+            selectedCctv.value = item;
+          });
+      });
+    });
+  };
 
-  bootMap('https://tiles.openfreemap.org/styles/liberty')
+  bootMap("https://tiles.openfreemap.org/styles/liberty");
 
   // Retry once with the MapLibre demo style on the first style-level error.
   // ponytail: fires on any map error (tiles included), not only style errors.
-  map?.once('error', (e) => {
-    console.error('MAPLIBRE ERROR:', e)
-    bootMap('https://demotiles.maplibre.org/style.json', true)
-  })
-})
+  map?.once("error", (e) => {
+    console.error("MAPLIBRE ERROR:", e);
+    bootMap("https://demotiles.maplibre.org/style.json", true);
+  });
+});
 
 onBeforeUnmount(() => {
-  map?.remove()
-  map = null
-  destroyHls()
-})
+  map?.remove();
+  map = null;
+  destroyHls();
+});
 
 function destroyHls() {
-  hls?.destroy()
-  hls = null
+  hls?.destroy();
+  hls = null;
 }
 
-// Fly out to the marker smoothly; nudge the map up afterwards so the marker
-// stays clear of the bottom sheet.
+// Fly out to the marker smoothly; nudge the map afterwards so the marker
+// stays clear of the player: below the mobile bottom sheet, or to the right
+// of the desktop sidebar (left-anchored).
 function flyToMarker(item: MarkerItem) {
-  if (!map) return
-  if (settlePan) map.off('moveend', settlePan)
+  if (!map) return;
+  if (settlePan) map.off("moveend", settlePan);
 
-  map.flyTo({ center: [item.lng, item.lat], zoom: 13, duration: 1000 })
+  map.flyTo({ center: [item.lng, item.lat], zoom: 13, duration: 1000 });
+
+  // Sidebar sits left on desktop (md / >= 768px), bottom sheet on mobile.
+  const isDesktop = window.innerWidth >= 768;
 
   settlePan = () => {
-    if (!map || !settlePan) return
-    map.off('moveend', settlePan)
-    settlePan = null
-    map.panBy([0, -100])
-  }
-  map.on('moveend', settlePan)
+    if (!map || !settlePan) return;
+    map.off("moveend", settlePan);
+    settlePan = null;
+    map.panBy(isDesktop ? [-180, 0] : [0, -100]);
+  };
+  map.on("moveend", settlePan);
 }
 
 async function loadStream(cctv: MarkerItem) {
-  destroyHls()
-  loadError.value = false
-  loading.value = true
+  destroyHls();
+  loadError.value = false;
+  loading.value = true;
 
-  await nextTick()
-  const video = videoRef.value
-  if (!video || selectedCctv.value !== cctv) return
+  await nextTick();
+  const video = videoRef.value;
+  if (!video || selectedCctv.value !== cctv) return;
 
-  const proxyUrl = `/api/cctv/${cctv.id}`
+  const proxyUrl = `/api/cctv/${cctv.id}`;
 
-  if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  if (video.canPlayType("application/vnd.apple.mpegurl")) {
     // Native HLS (Safari / iOS)
-    video.src = proxyUrl
+    video.src = proxyUrl;
   } else {
     try {
-      const { default: Hls } = await import('hls.js')
-      if (selectedCctv.value !== cctv) return // selection changed while loading
-      hls = new Hls()
-      hls.loadSource(proxyUrl)
-      hls.attachMedia(video)
+      const { default: Hls } = await import("hls.js");
+      if (selectedCctv.value !== cctv) return; // selection changed while loading
+      hls = new Hls();
+      hls.loadSource(proxyUrl);
+      hls.attachMedia(video);
       hls.on(Hls.Events.ERROR, (_event, data: ErrorData) => {
         if (data.fatal) {
-          destroyHls()
-          loading.value = false
-          loadError.value = true
+          destroyHls();
+          loading.value = false;
+          loadError.value = true;
         }
-      })
+      });
     } catch {
-      loading.value = false
-      loadError.value = true
+      loading.value = false;
+      loadError.value = true;
     }
   }
 }
 
 function retry() {
-  if (selectedCctv.value) loadStream(selectedCctv.value)
+  if (selectedCctv.value) loadStream(selectedCctv.value);
 }
 
 function onVideoPlaying() {
-  loading.value = false
-  loadError.value = false
+  loading.value = false;
+  loadError.value = false;
 }
 
 function onVideoError() {
-  loading.value = false
-  loadError.value = true
+  loading.value = false;
+  loadError.value = true;
 }
 
 watch(selectedCctv, (cctv) => {
   if (!cctv) {
-    loading.value = false
-    loadError.value = false
-    return
+    loading.value = false;
+    loadError.value = false;
+    return;
   }
-  loadStream(cctv)
-  flyToMarker(cctv)
-})
+  loadStream(cctv);
+  flyToMarker(cctv);
+});
 </script>
 
 <template>
@@ -170,8 +172,12 @@ watch(selectedCctv, (cctv) => {
     >
       <div class="flex items-center gap-2.5">
         <span class="relative flex h-2.5 w-2.5">
-          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60" />
-          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60"
+          />
+          <span
+            class="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse"
+          />
         </span>
         <span class="text-sm font-bold tracking-widest text-white">NAYANA</span>
       </div>
@@ -179,18 +185,21 @@ watch(selectedCctv, (cctv) => {
     </header>
 
     <Transition
-      enter-active-class="transition-transform duration-300 ease-out"
-      enter-from-class="translate-y-full"
-      leave-active-class="transition-transform duration-200 ease-in"
-      leave-to-class="translate-y-full"
+      enter-active-class="transition-all duration-300 ease-out"
+      enter-from-class="translate-y-full md:translate-y-0 md:-translate-x-6 md:opacity-0"
+      leave-active-class="transition-all duration-200 ease-in"
+      leave-to-class="translate-y-full md:translate-y-0 md:-translate-x-6 md:opacity-0"
     >
+      <!-- Mobile: bottom sheet. Desktop (md): floating sidebar card, left-anchored. -->
       <div
         v-if="selectedCctv"
-        class="absolute inset-x-0 bottom-0 z-[1000] rounded-t-2xl bg-white/95 p-4 shadow-2xl backdrop-blur"
+        class="absolute inset-x-0 bottom-0 z-[1000] rounded-t-2xl bg-white/95 p-4 shadow-2xl backdrop-blur md:top-20 md:bottom-auto md:left-6 md:inset-x-auto md:w-96 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto md:rounded-2xl"
       >
         <div class="flex items-start justify-between pb-3">
           <div>
-            <p class="text-xs uppercase tracking-wide text-zinc-500">CCTV Live</p>
+            <p class="text-xs uppercase tracking-wide text-zinc-500">
+              CCTV Live
+            </p>
             <p class="text-lg font-semibold">{{ selectedCctv.title }}</p>
           </div>
           <button
@@ -218,7 +227,9 @@ watch(selectedCctv, (cctv) => {
             v-if="loading && !loadError"
             class="absolute inset-0 flex items-center justify-center bg-black/40"
           >
-            <span class="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            <span
+              class="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white"
+            />
           </div>
 
           <!-- Stream error -->
@@ -226,7 +237,9 @@ watch(selectedCctv, (cctv) => {
             v-if="loadError"
             class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/70 px-4 text-center"
           >
-            <p class="text-sm text-white">Stream CCTV saat ini sedang tidak tersedia / offline.</p>
+            <p class="text-sm text-white">
+              Stream CCTV saat ini sedang tidak tersedia / offline.
+            </p>
             <button
               class="rounded-lg bg-white px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-zinc-100"
               @click="retry"
