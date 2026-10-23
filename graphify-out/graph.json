@@ -14,7 +14,67 @@
       "file_type": "code",
       "norm_label": "markeritem",
       "source_file": "app/pages/index.vue",
-      "source_location": "L6"
+      "source_location": "L7"
+    },
+    {
+      "id": "app_pages_index_destroyhls",
+      "label": "destroyHls()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "index.vue",
+      "file_type": "code",
+      "norm_label": "destroyhls()",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L49"
+    },
+    {
+      "id": "server_utils_cctv_proxy_findcctv",
+      "label": "findCctv()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "cctv-proxy.ts",
+      "file_type": "code",
+      "norm_label": "findcctv()",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "server_utils_cctv_proxy_handlecctvproxy",
+      "label": "handleCctvProxy()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "cctv-proxy.ts",
+      "file_type": "code",
+      "norm_label": "handlecctvproxy()",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "server_utils_cctv_proxy_isallowedsegmenttarget",
+      "label": "isAllowedSegmentTarget()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "cctv-proxy.ts",
+      "file_type": "code",
+      "norm_label": "isallowedsegmenttarget()",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "server_utils_cctv_proxy_rewritehlsurls",
+      "label": "rewriteHlsUrls()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "cctv-proxy.ts",
+      "file_type": "code",
+      "norm_label": "rewritehlsurls()",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L34"
     },
     {
       "id": "leaflet_leaflet",
@@ -94,6 +154,28 @@
       "source_location": "L9"
     },
     {
+      "id": "hls_js_hls_js",
+      "label": "hls.js",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "hls.js",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "hls.js",
+      "source_file": "hls.js"
+    },
+    {
+      "id": "server_api_cctv_id_segments_path",
+      "label": "[...path].ts",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "[...path].ts",
+      "file_type": "code",
+      "norm_label": "[...path].ts",
+      "source_file": "server/api/cctv/[id]/segments/[...path].ts",
+      "source_location": "L1"
+    },
+    {
       "id": "app_pages_index",
       "label": "index.vue",
       "_origin": "ast",
@@ -113,7 +195,7 @@
       "file_type": "code",
       "norm_label": "mapel",
       "source_file": "app/pages/index.vue",
-      "source_location": "L8"
+      "source_location": "L9"
     },
     {
       "id": "app_pages_index_selectedcctv",
@@ -124,7 +206,18 @@
       "file_type": "code",
       "norm_label": "selectedcctv",
       "source_file": "app/pages/index.vue",
-      "source_location": "L9"
+      "source_location": "L10"
+    },
+    {
+      "id": "app_pages_index_videoref",
+      "label": "videoRef",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "index.vue",
+      "file_type": "code",
+      "norm_label": "videoref",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L11"
     },
     {
       "id": "server_api_cctv_id",
@@ -149,48 +242,26 @@
       "source_location": "L1"
     },
     {
-      "id": "package",
-      "label": "package.json",
+      "id": "server_utils_cctv_proxy",
+      "label": "cctv-proxy.ts",
       "_origin": "ast",
       "community": 2,
-      "community_name": "package.json",
+      "community_name": "cctv-proxy.ts",
       "file_type": "code",
-      "norm_label": "package.json",
-      "source_file": "package.json",
+      "norm_label": "cctv-proxy.ts",
+      "source_file": "server/utils/cctv-proxy.ts",
       "source_location": "L1"
     },
     {
-      "id": "package_name",
-      "label": "name",
+      "id": "server_utils_cctv_proxy_proxy_headers",
+      "label": "PROXY_HEADERS",
       "_origin": "ast",
       "community": 2,
-      "community_name": "package.json",
+      "community_name": "cctv-proxy.ts",
       "file_type": "code",
-      "norm_label": "name",
-      "source_file": "package.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "package_private",
-      "label": "private",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "private",
-      "source_file": "package.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "package_type",
-      "label": "type",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "type",
-      "source_file": "package.json",
-      "source_location": "L3"
+      "norm_label": "proxy_headers",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L5"
     },
     {
       "id": "tsconfig",
@@ -308,11 +379,22 @@
       "source_location": "L5"
     },
     {
+      "id": "package",
+      "label": "package.json",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "package.json",
+      "source_file": "package.json",
+      "source_location": "L1"
+    },
+    {
       "id": "package_devdependencies",
       "label": "devDependencies",
       "_origin": "ast",
       "community": 7,
-      "community_name": "devDependencies",
+      "community_name": "package.json",
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
@@ -323,7 +405,7 @@
       "label": "@nuxtjs/tailwindcss",
       "_origin": "ast",
       "community": 7,
-      "community_name": "devDependencies",
+      "community_name": "package.json",
       "file_type": "code",
       "norm_label": "@nuxtjs/tailwindcss",
       "source_file": "package.json",
@@ -334,18 +416,51 @@
       "label": "@types/leaflet",
       "_origin": "ast",
       "community": 7,
-      "community_name": "devDependencies",
+      "community_name": "package.json",
       "file_type": "code",
       "norm_label": "@types/leaflet",
       "source_file": "package.json",
       "source_location": "L21"
     },
     {
+      "id": "package_name",
+      "label": "name",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "name",
+      "source_file": "package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "package_private",
+      "label": "private",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "private",
+      "source_file": "package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "package_type",
+      "label": "type",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "type",
+      "source_file": "package.json",
+      "source_location": "L3"
+    },
+    {
       "id": "nuxtjs_tailwindcss",
       "label": "@nuxtjs/tailwindcss",
       "_origin": "ast",
       "community": 7,
-      "community_name": "devDependencies",
+      "community_name": "package.json",
       "file_type": "concept",
       "norm_label": "@nuxtjs/tailwindcss",
       "source_file": "package.json",
@@ -356,7 +471,7 @@
       "label": "@types/leaflet",
       "_origin": "ast",
       "community": 7,
-      "community_name": "devDependencies",
+      "community_name": "package.json",
       "file_type": "concept",
       "norm_label": "@types/leaflet",
       "source_file": "package.json",
@@ -429,17 +544,6 @@
       "source_location": "L17"
     },
     {
-      "id": "hls_js",
-      "label": "hls.js",
-      "_origin": "ast",
-      "community": 8,
-      "community_name": "dependencies",
-      "file_type": "concept",
-      "norm_label": "hls.js",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
       "id": "nuxt",
       "label": "nuxt",
       "_origin": "ast",
@@ -449,6 +553,17 @@
       "norm_label": "nuxt",
       "source_file": "package.json",
       "source_location": "L15"
+    },
+    {
+      "id": "package_json_hls_js",
+      "label": "hls.js",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "hls.js",
+      "source_file": "package.json",
+      "source_location": "L13"
     },
     {
       "id": "package_json_leaflet",
@@ -510,8 +625,32 @@
   ],
   "links": [
     {
+      "source": "server_utils_cctv_proxy_handlecctvproxy",
+      "target": "server_utils_cctv_proxy_rewritehlsurls",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "server_utils_cctv_proxy_rewritehlsurls",
+      "target": "server_utils_cctv_proxy_isallowedsegmenttarget",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
       "source": "package_dependencies_hls_js",
-      "target": "hls_js",
+      "target": "package_json_hls_js",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -606,29 +745,51 @@
     },
     {
       "source": "app_pages_index",
+      "target": "app_pages_index_selectedcctv",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_videoref",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_destroyhls",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
       "target": "app_pages_index_markeritem",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
       "source": "app_pages_index",
       "target": "app_pages_index_mapel",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "app_pages_index",
-      "target": "app_pages_index_selectedcctv",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -880,6 +1041,61 @@
       "weight": 1.0
     },
     {
+      "source": "server_utils_cctv_proxy",
+      "target": "server_utils_cctv_proxy_findcctv",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "server_utils_cctv_proxy",
+      "target": "server_utils_cctv_proxy_isallowedsegmenttarget",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "server_utils_cctv_proxy",
+      "target": "server_utils_cctv_proxy_rewritehlsurls",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "server_utils_cctv_proxy",
+      "target": "server_utils_cctv_proxy_proxy_headers",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_utils_cctv_proxy",
+      "target": "server_utils_cctv_proxy_handlecctvproxy",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/utils/cctv-proxy.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
       "source": "tsconfig",
       "target": "tsconfig_files",
       "relation": "contains",
@@ -903,5 +1119,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f780078a432bbaa4c7f15a4c47f6644d0e052dab"
+  "built_at_commit": "95058cbfde7d7f8ef4ed8b98483064c6d4a85f43"
 }
