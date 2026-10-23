@@ -1,21 +1,20 @@
 # Graph Report - nayana  (2026-10-23)
 
 ## Corpus Check
-- 10 files · ~394 words
+- 9 files · ~566 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 41 nodes · 32 edges · 16 communities (10 shown, 6 thin omitted)
+- 45 nodes · 35 edges · 13 communities (11 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `32f2c60f`
+- Built from commit: `f780078a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- nuxt
 - scripts
 - package.json
 - tsconfig.json
@@ -23,9 +22,7 @@
 - devDependencies
 - dependencies
 - AGENTS.md
-- leaflet
-- vue
-- vue-router
+- index.vue
 
 ## God Nodes (most connected - your core abstractions)
 1. `scripts` - 6 edges
@@ -37,7 +34,7 @@
 7. `vue-router` - 2 edges
 8. `@nuxtjs/tailwindcss` - 2 edges
 9. `@types/leaflet` - 2 edges
-10. `private` - 1 edges
+10. `MarkerItem` - 1 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -45,7 +42,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (16 total, 6 thin omitted)
+## Communities (13 total, 2 thin omitted)
 
 ### Community 1 - "scripts"
 Cohesion: 0.33
@@ -64,22 +61,26 @@ Cohesion: 0.40
 Nodes (5): @nuxtjs/tailwindcss, devDependencies, @nuxtjs/tailwindcss, @types/leaflet, @types/leaflet
 
 ### Community 8 - "dependencies"
-Cohesion: 0.67
-Nodes (3): hls.js, dependencies, hls.js
+Cohesion: 0.18
+Nodes (11): hls.js, nuxt, dependencies, hls.js, leaflet, nuxt, vue, vue-router (+3 more)
+
+### Community 13 - "index.vue"
+Cohesion: 0.50
+Nodes (3): mapEl, MarkerItem, selectedCctv
 
 ## Knowledge Gaps
-- **21 isolated node(s):** `name`, `type`, `private`, `build`, `dev` (+16 more)
+- **24 isolated node(s):** `MarkerItem`, `mapEl`, `selectedCctv`, `name`, `type` (+19 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `dependencies` connect `dependencies` to `nuxt`, `package.json`, `leaflet`, `vue`, `vue-router`?**
-  _High betweenness centrality (0.244) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `package.json`?**
+  _High betweenness centrality (0.201) - this node is a cross-community bridge._
 - **Why does `scripts` connect `scripts` to `package.json`?**
-  _High betweenness centrality (0.141) - this node is a cross-community bridge._
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
-  _High betweenness centrality (0.113) - this node is a cross-community bridge._
-- **What connects `name`, `type`, `private` to the rest of the system?**
-  _21 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **What connects `MarkerItem`, `mapEl`, `selectedCctv` to the rest of the system?**
+  _24 weakly-connected nodes found - possible documentation gaps or missing edges._

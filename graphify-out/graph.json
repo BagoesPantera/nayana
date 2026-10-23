@@ -4,26 +4,28 @@
   "graph": {},
   "nodes": [
     {
-      "id": "package_dependencies_nuxt",
-      "label": "nuxt",
+      "id": "app_pages_index_markeritem",
+      "label": "MarkerItem",
+      "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "nuxt",
+      "community": 13,
+      "community_name": "index.vue",
       "file_type": "code",
-      "norm_label": "nuxt",
-      "source_file": "package.json",
-      "source_location": "L15"
+      "norm_label": "markeritem",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L6"
     },
     {
-      "id": "nuxt",
-      "label": "nuxt",
+      "id": "leaflet_leaflet",
+      "label": "leaflet",
       "_origin": "ast",
       "community": 0,
-      "community_name": "nuxt",
-      "file_type": "concept",
-      "norm_label": "nuxt",
-      "source_file": "package.json",
-      "source_location": "L15"
+      "community_name": "leaflet",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "leaflet",
+      "source_file": "leaflet"
     },
     {
       "id": "package_scripts",
@@ -92,72 +94,6 @@
       "source_location": "L9"
     },
     {
-      "id": "package_dependencies_leaflet",
-      "label": "leaflet",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "leaflet",
-      "file_type": "code",
-      "norm_label": "leaflet",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "leaflet",
-      "label": "leaflet",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "leaflet",
-      "file_type": "concept",
-      "norm_label": "leaflet",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "package_dependencies_vue",
-      "label": "vue",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "vue",
-      "file_type": "code",
-      "norm_label": "vue",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "vue",
-      "label": "vue",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "vue",
-      "file_type": "concept",
-      "norm_label": "vue",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_dependencies_vue_router",
-      "label": "vue-router",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "vue-router",
-      "file_type": "code",
-      "norm_label": "vue-router",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "vue_router",
-      "label": "vue-router",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "vue-router",
-      "file_type": "concept",
-      "norm_label": "vue-router",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
       "id": "app_pages_index",
       "label": "index.vue",
       "_origin": "ast",
@@ -167,6 +103,28 @@
       "norm_label": "index.vue",
       "source_file": "app/pages/index.vue",
       "source_location": "L1"
+    },
+    {
+      "id": "app_pages_index_mapel",
+      "label": "mapEl",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "index.vue",
+      "file_type": "code",
+      "norm_label": "mapel",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L8"
+    },
+    {
+      "id": "app_pages_index_selectedcctv",
+      "label": "selectedCctv",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "index.vue",
+      "file_type": "code",
+      "norm_label": "selectedcctv",
+      "source_file": "app/pages/index.vue",
+      "source_location": "L9"
     },
     {
       "id": "server_api_cctv_id",
@@ -427,6 +385,50 @@
       "source_location": "L13"
     },
     {
+      "id": "package_dependencies_leaflet",
+      "label": "leaflet",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "leaflet",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_dependencies_nuxt",
+      "label": "nuxt",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "nuxt",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_vue",
+      "label": "vue",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "vue",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_dependencies_vue_router",
+      "label": "vue-router",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "vue-router",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
       "id": "hls_js",
       "label": "hls.js",
       "_origin": "ast",
@@ -436,6 +438,50 @@
       "norm_label": "hls.js",
       "source_file": "package.json",
       "source_location": "L13"
+    },
+    {
+      "id": "nuxt",
+      "label": "nuxt",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "nuxt",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_json_leaflet",
+      "label": "leaflet",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "leaflet",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "vue",
+      "label": "vue",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "vue",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "vue_router",
+      "label": "vue-router",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "dependencies",
+      "file_type": "concept",
+      "norm_label": "vue-router",
+      "source_file": "package.json",
+      "source_location": "L17"
     },
     {
       "id": "agents",
@@ -477,7 +523,7 @@
     },
     {
       "source": "package_dependencies_leaflet",
-      "target": "leaflet",
+      "target": "package_json_leaflet",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -556,6 +602,39 @@
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_markeritem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_mapel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "app_pages_index",
+      "target": "app_pages_index_selectedcctv",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/pages/index.vue",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -824,5 +903,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "32f2c60f8491ab68bf2607c545afcd8b29a4ed4b"
+  "built_at_commit": "f780078a432bbaa4c7f15a4c47f6644d0e052dab"
 }
