@@ -26,7 +26,7 @@
       "file_type": "code",
       "norm_label": "destroyhls()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L52"
+      "source_location": "L55"
     },
     {
       "id": "app_pages_index_flytomarker",
@@ -38,7 +38,7 @@
       "file_type": "code",
       "norm_label": "flytomarker()",
       "source_file": "app/pages/index.vue",
-      "source_location": "L58"
+      "source_location": "L62"
     },
     {
       "id": "app_pages_index_loadstream",
@@ -299,7 +299,7 @@
       "file_type": "code",
       "norm_label": "loaderror",
       "source_file": "app/pages/index.vue",
-      "source_location": "L14"
+      "source_location": "L13"
     },
     {
       "id": "app_pages_index_loading",
@@ -310,7 +310,7 @@
       "file_type": "code",
       "norm_label": "loading",
       "source_file": "app/pages/index.vue",
-      "source_location": "L13"
+      "source_location": "L12"
     },
     {
       "id": "app_pages_index_mapel",
@@ -332,18 +332,7 @@
       "file_type": "code",
       "norm_label": "selectedcctv",
       "source_file": "app/pages/index.vue",
-      "source_location": "L12"
-    },
-    {
-      "id": "app_pages_index_sheetel",
-      "label": "sheetEl",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "index.vue",
-      "file_type": "code",
-      "norm_label": "sheetel",
-      "source_file": "app/pages/index.vue",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "app_pages_index_videoref",
@@ -354,7 +343,7 @@
       "file_type": "code",
       "norm_label": "videoref",
       "source_file": "app/pages/index.vue",
-      "source_location": "L11"
+      "source_location": "L10"
     },
     {
       "id": "server_api_cctv_id",
@@ -896,7 +885,7 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_sheetel",
+      "target": "app_pages_index_videoref",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -929,7 +918,7 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_videoref",
+      "target": "app_pages_index_selectedcctv",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -951,7 +940,7 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_selectedcctv",
+      "target": "app_pages_index_loading",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -962,7 +951,7 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_loading",
+      "target": "app_pages_index_loaderror",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -973,24 +962,13 @@
     },
     {
       "source": "app_pages_index",
-      "target": "app_pages_index_loaderror",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "app/pages/index.vue",
-      "source_location": "L14",
-      "weight": 1.0
-    },
-    {
-      "source": "app_pages_index",
       "target": "app_pages_index_destroyhls",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L52",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -1001,7 +979,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/pages/index.vue",
-      "source_location": "L58",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -1369,5 +1347,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3d78f2f9904ab8fb15cdf33056aa2d974fba6989"
+  "built_at_commit": "70ba15b7f67b13c0e93842cc8a06fce0dfe1ce0c"
 }

@@ -7,7 +7,6 @@ const { data: markers } = await useFetch('/api/markers')
 type MarkerItem = NonNullable<typeof markers.value>[number]
 
 const mapEl = ref<HTMLElement | null>(null)
-const sheetEl = ref<HTMLElement | null>(null)
 const videoRef = ref<HTMLVideoElement | null>(null)
 const selectedCctv = ref<MarkerItem | null>(null)
 const loading = ref(false)
@@ -26,7 +25,11 @@ onMounted(async () => {
     shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png'
   })
 
-  map = L.map(mapEl.value as HTMLElement).setView([-8.4095, 115.1889], 10)
+  map = L.map(mapEl.value as HTMLElement, { zoomControl: false }).setView(
+    [-8.4095, 115.1889],
+    10
+  )
+  L.control.zoom({ position: 'bottomright' }).addTo(map)
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -54,13 +57,10 @@ function destroyHls() {
   hls = null
 }
 
-// Center the map so the clicked marker sits above the bottom sheet.
+// Fly out to the marker smoothly; nudge the map up afterwards so the marker
+// stays clear of the bottom sheet.
 function flyToMarker(item: MarkerItem) {
-  if (!map) return
-  const zoom = 15
-  const point = map.project([item.lat, item.lng], zoom)
-  const sheetHeight = sheetEl.value?.getBoundingClientRect().height ?? 0
-  map.flyTo(map.unproject(point.add([0, sheetHeight / 2])), zoom, { duration: 0.8 })
+  map?.flyTo([item.lat, item.lng], 13, { duration: 1 })
 }
 
 async function loadStream(cctv: MarkerItem) {
@@ -120,6 +120,7 @@ watch(selectedCctv, (cctv) => {
   }
   loadStream(cctv)
   flyToMarker(cctv)
+  setTimeout(() => map?.panBy([0, 100], { animate: true }), 300)
 })
 </script>
 
@@ -129,7 +130,7 @@ watch(selectedCctv, (cctv) => {
 
     <!-- Floating header -->
     <header
-      class="absolute top-4 left-4 right-4 z-[1000] flex items-center justify-between rounded-xl border border-white/10 bg-slate-900/80 px-4 py-2.5 shadow-lg backdrop-blur-md"
+      class="absolute top-3 left-3 right-3 z-[1000] flex items-center justify-between rounded-xl border border-white/10 bg-slate-900/80 px-4 py-2.5 shadow-lg backdrop-blur-md"
     >
       <div class="flex items-center gap-2.5">
         <span class="relative flex h-2.5 w-2.5">
@@ -148,7 +149,6 @@ watch(selectedCctv, (cctv) => {
       leave-to-class="translate-y-full"
     >
       <div
-        ref="sheetEl"
         v-if="selectedCctv"
         class="absolute inset-x-0 bottom-0 z-[1000] rounded-t-2xl bg-white/95 p-4 shadow-2xl backdrop-blur"
       >
