@@ -13,6 +13,7 @@ const loadError = ref(false);
 let map: MaplibreMap | null = null;
 let settlePan: (() => void) | null = null;
 let hls: HlsInstance | null = null;
+const markerEls = new Map<number, HTMLElement>();
 
 onMounted(async () => {
   const maplibregl = await import("maplibre-gl");
@@ -41,14 +42,18 @@ onMounted(async () => {
 
     map.on("load", () => {
       if (!map) return;
+      markerEls.clear();
       markers.value?.forEach((item) => {
-        new maplibregl.Marker()
+        const el = document.createElement("div");
+        el.className = "nayana-pin";
+        el.innerHTML = SVG_PIN;
+        markerEls.set(item.id, el);
+        el.addEventListener("click", () => {
+          selectedCctv.value = item;
+        });
+        new maplibregl.Marker({ element: el })
           .setLngLat([item.lng, item.lat])
-          .addTo(map as MaplibreMap)
-          .getElement()
-          .addEventListener("click", () => {
-            selectedCctv.value = item;
-          });
+          .addTo(map as MaplibreMap);
       });
     });
   };
@@ -63,7 +68,22 @@ onMounted(async () => {
   });
 });
 
+// Material-style SVG pin. Fill follows `currentColor` so the active/inactive
+// state is a plain class swap on `.nayana-pin` — the MapLibre wrapper element
+// itself is never transformed (its translate3d positioning stays intact).
+const SVG_PIN =
+  '<svg width="28" height="40" viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" stroke="rgba(0,0,0,0.35)" stroke-width="0.5" d="M12 0C5.4 0 0 5.4 0 12c0 9 12 22 12 22s12-13 12-22C24 5.4 18.6 0 12 0zm0 16.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9z"/></svg>';
+
+function setPinState(id: number, active: boolean) {
+  markerEls.get(id)?.classList.toggle("active", active);
+}
+
+function resetPins() {
+  for (const [id, el] of markerEls) el.classList.remove("active");
+}
+
 onBeforeUnmount(() => {
+  if (map && settlePan) map.off("moveend", settlePan);
   map?.remove();
   map = null;
   destroyHls();
@@ -90,7 +110,15 @@ function flyToMarker(item: MarkerItem) {
     if (!map || !settlePan) return;
     map.off("moveend", settlePan);
     settlePan = null;
-    map.panBy(isDesktop ? [-180, 0] : [0, -100]);
+    if (isDesktop) {
+      map.panBy([-180, 0]);
+    } else {
+      // Mobile: park the pin at ~25% from the top (flyTo centered it at 50%).
+      // MapLibre's panBy negates the offset internally (mult(-1)), so positive
+      // Y raises the pin on screen (verified in maplibre-gl source).
+      const offsetY = Math.round(window.innerHeight * 0.25);
+      map.panBy([0, offsetY]);
+    }
   };
   map.on("moveend", settlePan);
 }
@@ -148,8 +176,11 @@ watch(selectedCctv, (cctv) => {
   if (!cctv) {
     loading.value = false;
     loadError.value = false;
+    resetPins();
     return;
   }
+  resetPins();
+  setPinState(cctv.id, true);
   loadStream(cctv);
   flyToMarker(cctv);
 });
@@ -252,3 +283,29 @@ watch(selectedCctv, (cctv) => {
     </Transition>
   </div>
 </template>
+
+<!-- Global (not scoped): marker elements live outside the component tree. -->
+<style>
+.nayana-pin {
+  cursor: pointer;
+  color: #2563eb; /* inactive: blue */
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+  transition: color 0.2s ease;
+}
+.nayana-pin:hover {
+  color: #1d4ed8;
+}
+.nayana-pin.active {
+  color: #dc2626; /* active: red */
+  animation: nayana-pin-pulse 1.2s ease-in-out infinite;
+}
+@keyframes nayana-pin-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 2px 6px rgba(220, 38, 38, 0.75));
+  }
+}
+</style>

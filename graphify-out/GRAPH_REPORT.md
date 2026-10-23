@@ -1,17 +1,17 @@
 # Graph Report - nayana  (2026-10-24)
 
 ## Corpus Check
-- 11 files · ~3,102 words
+- 11 files · ~3,361 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .ico 1)
 
 ## Summary
-- 84 nodes · 83 edges · 13 communities (8 shown, 5 thin omitted)
+- 87 nodes · 86 edges · 13 communities (8 shown, 5 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.95)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3936a02f`
+- Built from commit: `579443aa`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,8 +50,8 @@
 ## Communities (13 total, 5 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.17
-Nodes (11): name, private, type, leaflet, @maplibre/maplibre-gl-leaflet, nuxt, @nuxtjs/tailwindcss, @types/leaflet (+3 more)
+Cohesion: 0.15
+Nodes (12): name, private, type, leaflet, maplibre-gl, @maplibre/maplibre-gl-leaflet, nuxt, @nuxtjs/tailwindcss (+4 more)
 
 ### Community 1 - "scripts"
 Cohesion: 0.33
@@ -78,12 +78,12 @@ Cohesion: 0.25
 Nodes (7): 1. System Architecture Guidelines, 2. Code Standards & Patterns, 4. UI/UX Rules, 5. Common Commands, CRITICAL SECURITY RULE, graphify, NAYANA — AI Agent Guide
 
 ### Community 13 - "index.vue"
-Cohesion: 0.15
-Nodes (10): destroyHls(), loadError, loading, loadStream(), MarkerItem, retry(), selectedCctv, videoRef (+2 more)
+Cohesion: 0.13
+Nodes (10): destroyHls(), loadError, loading, loadStream(), markerEls, MarkerItem, retry(), selectedCctv (+2 more)
 
 ## Knowledge Gaps
 - **8 isolated node(s):** `@maplibre/maplibre-gl-leaflet`, `leaflet`, `nuxt`, `vue`, `vue-router` (+3 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 63 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 66 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -93,7 +93,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.084) - this node is a cross-community bridge._
 - **What connects `@maplibre/maplibre-gl-leaflet`, `leaflet`, `nuxt` to the rest of the system?**
   _8 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `index.vue` be split into smaller, more focused modules?**
+  _Cohesion score 0.13071895424836602 - nodes in this community are weakly interconnected._
 - **Why does `hls.js` connect `index.vue` to `package.json`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `scripts` connect `scripts` to `package.json`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+  _High betweenness centrality (0.077) - this node is a cross-community bridge._
+- **Why does `maplibre-gl` connect `package.json` to `index.vue`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
