@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  app: {
+    head: {
+      title: 'Nayana'
+    }
+  },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['maplibre-gl/dist/maplibre-gl.css'],
   vite: {

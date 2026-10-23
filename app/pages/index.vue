@@ -157,6 +157,13 @@ watch(selectedCctv, (cctv) => {
   <div class="relative h-[100dvh] w-full">
     <div id="map" class="w-full h-full absolute inset-0 z-0" />
 
+    <!-- Watermark -->
+    <div
+      class="pointer-events-none absolute bottom-3 left-3 z-10 rounded-md bg-black/40 px-2 py-1 text-xs text-white/80 backdrop-blur-sm"
+    >
+      made with &#10084;&#65039; by pantera
+    </div>
+
     <!-- Floating header -->
     <header
       class="absolute top-3 left-3 right-3 z-[1000] flex items-center justify-between rounded-xl border border-white/10 bg-slate-900/80 px-4 py-2.5 shadow-lg backdrop-blur-md"
