@@ -39,7 +39,8 @@ export function rewriteHlsUrls(text: string, id: string, playlistUrl: string): s
     try {
       const abs = new URL(uri, playlistUrl).href
       if (!isAllowedSegmentTarget(playlistUrl, abs)) return null
-      return `${prefix}${encodeURIComponent(abs)}`
+      // base64url token hides the real origin from the browser DevTools
+      return `${prefix}${Buffer.from(abs).toString('base64url')}`
     } catch {
       return null
     }

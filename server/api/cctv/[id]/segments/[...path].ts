@@ -5,9 +5,13 @@ export default defineEventHandler((event) => {
     throw createError({ statusCode: 404, statusMessage: 'CCTV not found' })
   }
 
+  const token = getRouterParam(event, 'path') ?? ''
+
   let target = ''
   try {
-    target = decodeURIComponent(getRouterParam(event, 'path') ?? '')
+    // The playlist carries base64url tokens, never the real URL.
+    target = Buffer.from(token, 'base64url').toString('utf-8')
+    if (!/^https?:\/\//.test(target)) target = ''
   } catch {
     target = ''
   }
