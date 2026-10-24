@@ -141,7 +141,9 @@ async function loadStream(cctv: MarkerItem) {
     try {
       const { default: Hls } = await import("hls.js");
       if (selectedCctv.value !== cctv) return; // selection changed while loading
-      hls = new Hls();
+      hls = new Hls({
+        xhrSetup: (xhr) => xhr.setRequestHeader("X-Nayana-Client", "true")
+      });
       hls.loadSource(proxyUrl);
       hls.attachMedia(video);
       hls.on(Hls.Events.ERROR, (_event, data: ErrorData) => {

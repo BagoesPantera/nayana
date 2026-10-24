@@ -1,4 +1,6 @@
 export default defineEventHandler((event) => {
+  assertSameOrigin(event)
+
   const item = findCctv(getRouterParam(event, 'id'))
 
   if (!item) {
